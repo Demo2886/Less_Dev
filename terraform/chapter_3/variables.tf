@@ -24,7 +24,7 @@ variable "list_numeric_my-dev" {
 
 variable "map_my-dev" {
   description = "An example of a map in Terraform"
-  type        = map(string)
+  type        = map(string)map_my
 
   default = {
     key1 = "value1"
