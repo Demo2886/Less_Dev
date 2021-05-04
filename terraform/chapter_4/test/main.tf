@@ -140,8 +140,8 @@ resource "aws_lb_target_group" "asg-target-group" {
 #############################################################################
 
 # FILEOVER ВЕБ-СЕРВЕР НА UBUNTU
-resource "aws_autoscaling_group" "amazon-linux" {
-  launch_configuration = aws_launch_configuration.amazon-linux.name
+resource "aws_autoscaling_group" "ubuntu-linux" {
+  launch_configuration = aws_launch_configuration.ubuntu-linux.name
   vpc_zone_identifier  = data.aws_subnet_ids.default.ids
 
   # Включаем интеграцию между ASG и ALB, указав аргумент target_group_arns
@@ -155,12 +155,12 @@ resource "aws_autoscaling_group" "amazon-linux" {
 
   tag {
     key                 = "Name"
-    value               = "terraform-asg-amazon-linux"
+    value               = "terraform-asg-ubuntu-linux"
     propagate_at_launch = true
   }
 }
 
-resource "aws_launch_configuration" "amazon-linux" {
+resource "aws_launch_configuration" "ubuntu-linux" {
   image_id      = "ami-0b1deee75235aa4bb"
   instance_type = "t2.micro"
 
